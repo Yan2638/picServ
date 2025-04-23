@@ -1,0 +1,127 @@
+/* ——— Общая карта ————————————————————————————————————————— */
+.character-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* глубокий сине‑серый градиент */
+    background: linear-gradient(145deg, #1a1f2a 0%, #262d3e 100%);
+    border: 2px solid #3c465f;
+    border-radius: 12px;
+    padding: 1.2rem;
+    box-shadow: 0 6px 18px rgba(8, 10, 20, 0.6);
+}
+
+/* ——— Картинка корабля ———————————————————————————— */
+.ship-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.character-ship-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.ship-wrapper:hover .character-ship-img {
+    transform: scale(1.04);
+}
+
+/* затемняющий градиент для читаемости текста */
+.ship-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 40%,
+            rgba(0, 0, 0, 0.65) 100%
+    );
+    pointer-events: none;
+}
+
+/* ——— Описание —————————————————————————————————————— */
+.ship-description {
+    text-align: center;
+    color: #e4e8f2;          /* светлый, но не белый */
+}
+
+.ship-description h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #cfa75e;          /* приглушённое золото */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.ship-description p {
+    margin: 0.25rem 0;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: #cfd4e3;
+}
+
+.stat-value {
+    font-weight: 600;
+    color: #f4f6ff;
+}
+.modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+    width: 100%;
+    max-width: 420px;
+}
+
+.module-slot {
+    background-color: #2a3144;
+    border: 1px solid #444c5a;
+    border-radius: 8px;
+    padding: 0.5rem;
+    text-align: center;
+    color: #ccc;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    transition: transform 0.3s;
+}
+.module-slot:hover {
+    transform: translateY(-4px);
+}
+
+.slot-label {
+    display: block;
+    font-size: 0.75rem;
+    color: #aaa;
+    margin-bottom: 0.4rem;
+}
+
+.slot-image {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    border-radius: 6px;
+    background-color: #1f2533;
+    padding: 4px;
+    border: 1px solid #3a4052;
+}
+
+.slot-placeholder {
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    background-color: #1d2230;
+    border-radius: 6px;
+    border: 1px dashed #555;
+    color: #666;
+    font-size: 1.2rem;
+}

@@ -1,0 +1,19 @@
+.character-stats {
+    background-color: #1f1f2f;
+    padding: 1rem;
+    border-radius: 8px;
+    color: #fff;
+    max-width: 400px;
+    margin: auto;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid #333;
+}
+
+.stat-row:last-child {
+    border-bottom: none;
+}

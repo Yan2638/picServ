@@ -1,0 +1,86 @@
+.char-avatar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: #1c1c2b;
+    padding: 0.8rem;
+    border-radius: 8px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+    margin-bottom: 1rem;
+}
+
+.char-avatar-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px; /* квадрат с немного скруглёнными краями */
+    border: 2px solid #e1a948;
+    background-color: #fff;
+}
+
+.char-avatar-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.char-avatar-name {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #f0e6d2;
+}
+
+.char-avatar-level {
+    margin: 0.2rem 0 0 0;
+    font-size: 0.85rem;
+    color: #c9c9c9;
+}
+.char-avatar-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: #ccc;
+    margin-top: 4px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.hp-bar-wrapper,
+.xp-bar-wrapper {
+    margin-top: 6px;
+}
+
+.hp-bar-bg,
+.xp-bar-bg {
+    width: 100%;
+    height: 8px;
+    background-color: #2c2c2c;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.hp-bar-fill {
+    height: 100%;
+    background-color: #e53935;
+    transition: width 0.3s ease;
+}
+
+.xp-bar-fill {
+    height: 100%;
+    background-color: #2196f3;
+    transition: width 0.3s ease;
+}
+
+.hp-bar-text,
+.xp-bar-text {
+    font-size: 12px;
+    color: #ccc;
+    margin-top: 2px;
+    text-align: right;
+}

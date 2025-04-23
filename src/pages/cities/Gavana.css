@@ -1,0 +1,29 @@
+.gavana-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gavana-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-bottom: 2px solid #333;
+}
+
+.gavana-content {
+    background-color: rgba(15, 15, 25, 0.8);
+    color: #f0f0f0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    font-family: "Georgia", serif;
+}
+
+@media (max-width: 768px) {
+    .gavana-content {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+}

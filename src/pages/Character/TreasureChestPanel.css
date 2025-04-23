@@ -1,0 +1,186 @@
+.chest-panel {
+    padding: 1rem;
+    background: #1d1d2b;
+    border-radius: 10px;
+    color: #f0f0f0;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 80px);
+    gap: 10px;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+/* Базовая ячейка */
+.grid-slot {
+    width: 64px;
+    height: 64px;
+    border: 2px solid #444;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Изображение предмета */
+.grid-slot img.item-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    pointer-events: all;
+}
+
+/* Цветовая обводка по редкости */
+.grid-slot.common {
+    border-color: #888;
+    box-shadow: 0 0 2px 1px #8888;
+}
+
+.grid-slot.rare {
+    border-color: #3a80e1;
+    box-shadow: 0 0 3px 2px #3a80e155;
+}
+
+.grid-slot.epic {
+    border-color: #a037f5;
+    box-shadow: 0 0 3px 2px #a037f566;
+}
+
+.grid-slot.legendary {
+    border-color: #f59e0b;
+    box-shadow: 0 0 4px 2px #f59e0b88;
+}
+
+/* Обводка при перетаскивании */
+.grid-slot.dragging-from {
+    outline: 2px dashed #e1a948;
+    outline-offset: -4px;
+    background-color: rgba(255, 255, 0, 0.05);
+}
+
+
+.item-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: all;
+    user-select: none;
+}
+
+.item-tooltip {
+    position: absolute;
+    background: #222;
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 6px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.5);
+    z-index: 1000;
+    font-size: 0.85rem;
+    max-width: 180px;
+    pointer-events: none;
+    top: 10px;
+    left: 10px;
+}
+
+.item-details {
+    background: #1c1c1c;
+    color: #fff;
+    border: 2px solid #e1a948;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    max-width: 320px;
+}
+
+.item-details ul {
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.item-details button {
+    margin-right: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    background: #e1a948;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.item-details-popup {
+    background: #1e1e1e;
+    border: 2px solid #e1a948;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+    color: #fff;
+    max-width: 400px;
+}
+
+.item-header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.item-detail-img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    border: 2px solid #555;
+    border-radius: 6px;
+    background: #2e2e2e;
+}
+
+.item-description {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-bottom: 0.8rem;
+}
+
+.item-stats {
+    list-style: none;
+    padding-left: 0;
+    margin: 0 0 1rem 0;
+    font-size: 0.95rem;
+}
+
+.item-stats li {
+    margin-bottom: 0.3rem;
+}
+
+.item-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-start;
+}
+
+.item-actions button {
+    background: #e1a948;
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.rarity-tag {
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 0.2rem;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* Цвета для разных редкостей */
+.rarity-tag.common { background: #666; color: #fff; }
+.rarity-tag.rare { background: #3a80e1; color: #fff; }
+.rarity-tag.epic { background: #a037f5; color: #fff; }
+.rarity-tag.legendary { background: #f59e0b; color: #000; }

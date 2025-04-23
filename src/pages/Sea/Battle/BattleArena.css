@@ -1,0 +1,20 @@
+.vs-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.vs-player,
+.vs-target {
+    flex: 1;
+}
+
+.vs-label {
+    font-size: 2rem;
+    font-weight: bold;
+    color: gold;
+    text-align: center;
+    width: 60px;
+}

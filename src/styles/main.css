@@ -1,0 +1,40 @@
+/* Сброс стандартных отступов и контроль коробочной модели */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Глобальные стили */
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: system-ui, sans-serif;
+    background: #f9f9f9;
+    color: #222;
+}
+
+/* Шапка и подвал */
+header,
+footer {
+    padding: 1rem;
+    background: #1e1e1e;
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+
+/* Контентная часть */
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+    main {
+        padding: 1rem;
+    }
+}

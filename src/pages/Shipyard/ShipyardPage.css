@@ -1,0 +1,34 @@
+.shipyard-page {
+    padding: 2rem;
+    color: #f0f0f0;
+    background-color: #121212;
+}
+
+.store-item-card {
+    background: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.store-item-card:hover {
+    transform: translateY(-4px);
+    border-color: #555;
+}
+
+.buy-button {
+    background: #28a745;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.buy-button:hover {
+    background: #218838;
+}

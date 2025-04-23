@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&family=Open+Sans&display=swap');
+
+:root {
+    --bg: #0b0c10;
+    --card: #1f1f2e;
+    --accent: #e1a948;
+    --text: #f0f0f0;
+    --muted: #aaaaaa;
+    --error: #e94e4e;
+    --success: #3fc380;
+
+    --font-heading: 'Pirata One', cursive;
+    --font-body: 'Open Sans', sans-serif;
+
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--accent);
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button {
+    background-color: var(--accent);
+    border: none;
+    color: black;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #f0c96b;
+}
