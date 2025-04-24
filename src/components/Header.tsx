@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaEnvelope } from "react-icons/fa";
 import { useApi } from "../api/useApi";
+import BottomNav from "./BottomNav";
 
 const Header = () => {
     const [messages, setMessages] = useState(false);
@@ -69,6 +70,7 @@ const Header = () => {
                 fontSize: "0.85rem",
                 borderBottom: "1px solid #e1a948",
                 boxShadow: "0 1px 3px rgba(0,0,0,0.2)",
+                position: "relative", // для позиционирования нижней навигации внутри хедера
             }}
         >
             <div style={{ fontWeight: "bold", fontSize: "1rem" }}>🏴‍☠️ Pirate Game</div>
@@ -103,6 +105,19 @@ const Header = () => {
                         style={{ cursor: "pointer" }}
                     />
                 </div>
+            </div>
+
+            {/* BottomNav */}
+            <div style={{
+                position: "absolute",
+                bottom: "0", // прижимаем к низу хедера
+                left: "0",
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                zIndex: 1, // выше чем все элементы хедера
+            }}>
+                <BottomNav />
             </div>
         </header>
     );

@@ -1,19 +1,88 @@
-.character-stats {
-    background-color: #1f1f2f;
-    padding: 1rem;
-    border-radius: 8px;
-    color: #fff;
-    max-width: 400px;
-    margin: auto;
+.char-stats-panel {
+    background: url('https://textur.gas-kvas.com/uploads/posts/2024-10/textur-gas-kvas-com-ixjg-p-teksturi-karta-sokrovishch-3.jpg'); /* текстура карты */
+    background-size: cover;
+    filter: sepia(0.2) saturate(1.5);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: 'Pirate', sans-serif;
+    color: #d2b48c;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
 }
 
-.stat-row {
+.char-stats-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* полупрозрачный b */
+    border-radius: 15px;
+    z-index: -1;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Тень для выделения */
+}
+
+.char-stats-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.char-stats-list li {
+    font-size: 1.1rem;
     display: flex;
     justify-content: space-between;
-    padding: 0.4rem 0;
-    border-bottom: 1px solid #333;
+    margin: 10px 0;
+    padding: 5px;
+    border-bottom: 1px solid #e1a948;
 }
 
-.stat-row:last-child {
-    border-bottom: none;
+.char-stats-list li .bonus {
+    color: #28a745; /* Зеленый для бонусов */
+}
+
+.char-stats-list li .malus {
+    color: #d9534f; /* Красный для штрафов */
+}
+
+.char-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.stat-item {
+    background: rgba(0, 0, 0, 0.7); /* Полупрозрачный черный фон */
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #d2b48c; /* Цвет текста */
+    font-size: 1rem;
+}
+
+.stat-item .stat-emoji {
+    font-size: 1.5rem;
+}
+
+.stat-item .stat-label {
+    flex: 1;
+    padding-left: 10px;
+}
+
+.stat-item .stat-amount {
+    font-weight: bold;
+    padding-right: 10px;
 }

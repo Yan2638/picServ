@@ -73,7 +73,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         } catch (err) {
             console.error("❌ Ошибка при обновлении пользователя:", err);
             setUser(null);
-            setIsAuthenticated(false);
+            setIsAuthenticated(true);
         }
     };
 

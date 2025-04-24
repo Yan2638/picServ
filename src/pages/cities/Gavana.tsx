@@ -18,8 +18,6 @@ const Gavana = () => {
                 <h2>Welcome to Gavana 🏝️</h2>
                 <p>This is the first harbor every new pirate visits. Enjoy your stay.</p>
             </div>
-
-            <BottomNav />
         </div>
     );
 };

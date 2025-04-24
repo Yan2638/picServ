@@ -17,17 +17,18 @@ const CharacterPage = () => {
     }, [activeTab]);
 
     return (
-        <div className="character-layout">
-            <LeftPanel onTabChange={setActiveTab} activeTab={activeTab} />
+        <>
+            <div className="character-layout">
+                <LeftPanel onTabChange={setActiveTab} activeTab={activeTab} />
 
-            <div className="character-center">
-                <CharacterView activeTab={activeTab} />
+                <div className="character-center">
+                    <CharacterView activeTab={activeTab} />
+                </div>
+
+                {/* <RightPanel setActiveTab={setActiveTab} activeTab={activeTab} /> */}
+
             </div>
-
-            <RightPanel setActiveTab={setActiveTab} activeTab={activeTab} />
-
-            <BottomNav /> {/* ← вот оно */}
-        </div>
+        </>
     );
 };
 

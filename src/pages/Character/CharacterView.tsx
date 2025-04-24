@@ -16,13 +16,15 @@ const CharacterView: React.FC<Props> = ({ activeTab }) => {
                     <EquippedItemsPanel />
                 </div>
             );
+            
         case "mail":
             return <div className="character-panel">📨 Здесь твоя почта</div>;
         case "skills":
             return <div className="character-panel">📜 Тут навыки пирата</div>;
         case "achievements":
             return <div className="character-panel">🏆 А тут достижения</div>;
-        case "profile":
+        
+            case "profile":
             return (
                 <div className="character-panel">
                     <CharacterStatsPanel />

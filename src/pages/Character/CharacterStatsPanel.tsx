@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useApi } from "../../api/useApi";
-import "./CharacterStats.css";
+import "./CharacterStatsPanel.css";
 
 interface Resource {
     type: string;
