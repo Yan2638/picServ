@@ -1,3 +1,4 @@
+// 📁 src/App.tsx
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import NotFoundPage from "./pages/NotFoundPage";
 import Layout from "./layouts/Layout";
@@ -9,7 +10,7 @@ import RegisterPage from "./pages/Auth/RegisterPage";
 import { useAuth } from "./context/AuthContext";
 import CharacterPage from "./pages/Character/CharacterPage";
 import SeaLocations from "./pages/Sea/SeaLocations";
-import BattleArena from "./pages/Sea/Battle/BattleArena"; // ✅ Импортируем арену
+import BattleArena from "./pages/Sea/Battle/BattleArena";
 import ShipyardPage from "./pages/Shipyard/ShipyardPage";
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
 
     return (
         <Routes>
-            {/* 🔓 Публичные маршруты */}
+            {/* Публичные */}
             {!isAuthenticated && (
                 <>
                     <Route path="/login" element={<LoginPage />} />
@@ -31,7 +32,7 @@ function App() {
                 </>
             )}
 
-            {/* 🔐 Приватные маршруты */}
+            {/* Приватные */}
             {isAuthenticated && (
                 <Route element={<Layout />}>
                     <Route path="/" element={<Navigate to="/cities/gavana" replace />} />
@@ -40,13 +41,13 @@ function App() {
                     <Route path="/cities/atlantis" element={<Atlantis />} />
                     <Route path="/character" element={<CharacterPage />} />
                     <Route path="/sea" element={<SeaLocations />} />
-                    <Route path="/battle/:locationId" element={<BattleArena />} /> {/* ⚔️ Новый маршрут */}
+                    <Route path="/battle/:locationId" element={<BattleArena />} />
                     <Route path="/shipyard" element={<ShipyardPage />} />
                     <Route path="*" element={<NotFoundPage />} />
                 </Route>
             )}
 
-            {/* 👮‍♂️ Защита от ручного входа на login/register */}
+            {/* Защита от ручного входа на login/register */}
             {isAuthenticated &&
                 (location.pathname === "/login" || location.pathname === "/register") && (
                     <Route path="*" element={<Navigate to="/cities/gavana" replace />} />

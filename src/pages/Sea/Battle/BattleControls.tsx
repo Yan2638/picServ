@@ -8,12 +8,11 @@ interface Skill {
     iconUrl?: string;
     cooldownLeft: number;
     owned?: boolean;
-    disabled?: boolean;
-    reason?: string;
-    requiredItems?: number[];
-    requiredShip?: string;
+    disabled?: boolean;  // приходит с сервера
+    reason?: string;     // причина недоступности
 }
 
+/** Пропы для нашего компонента кнопок */
 interface BattleControlsProps {
     target: any;
     busy: boolean;
@@ -21,10 +20,13 @@ interface BattleControlsProps {
     pickTarget: () => void;
     isEveryoneDead: boolean;
     onUseSkill: (skill: Skill) => void;
+
+    // Ресурсы (для отображения)
     rumAmount: number;
-    userShipId?: string | null;
+    gunpowderAmount?: number;
+
+    // Список скиллов
     skills?: Skill[];
-    userInventory?: Record<number, number>; // itemId => quantity
 }
 
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000';
@@ -37,49 +39,50 @@ export const BattleControls: React.FC<BattleControlsProps> = ({
                                                                   isEveryoneDead,
                                                                   onUseSkill,
                                                                   rumAmount,
-                                                                  userShipId = null,
+                                                                  gunpowderAmount = 0,
                                                                   skills = [],
-                                                                  userInventory = {},
                                                               }) => {
     return (
         <div className="battle-controls">
+            {/* Перебираем массив skills */}
             {skills.map((skill) => {
                 const isHeal = skill.type === 'heal';
                 const isAttack = skill.type === 'attack' || skill.type === 'damage';
+                const isMortar = skill.type === 'mortar_fire';
 
+                // Если skill.owned === false, значит нет этого скилла
                 const owned = skill.owned ?? true;
+                // Если skill.cooldownLeft > 0, то на кулдауне
                 const isOnCooldown = skill.cooldownLeft > 0;
-                const hasRum = rumAmount > 0;
-                const requiredShipMet = !skill.requiredShip || skill.requiredShip === userShipId;
 
-                const hasRequiredItems = skill.requiredItems?.every(itemId => {
-                    return userInventory[itemId] && userInventory[itemId] > 0;
-                }) ?? true;
-
-                // Индивидуальная проверка по типу
+                // Проверяем логику недоступности
                 let isLogicDisabled = false;
-                let reason = '';
+                let reason = skill.reason || '';
 
                 if (!owned) {
                     isLogicDisabled = true;
-                    reason = 'Недоступно';
-                } else if (isHeal && !hasRum) {
+                    reason = 'Скилл не изучен';
+                }
+                if (isHeal && rumAmount <= 0) {
                     isLogicDisabled = true;
                     reason = 'Нет рома';
-                } else if (skill.requiredShip && !requiredShipMet) {
+                }
+                if (isMortar && gunpowderAmount <= 0) {
                     isLogicDisabled = true;
-                    reason = `Нужен корабль: ${skill.requiredShip}`;
-                } else if (!hasRequiredItems) {
-                    isLogicDisabled = true;
-                    reason = 'Нет нужных предметов';
-                } else if (isAttack && !target) {
+                    reason = 'Нет пороха';
+                }
+                if (isAttack && !target) {
                     isLogicDisabled = true;
                     reason = 'Нет цели';
                 }
 
+                // Итоговый флаг disabled
                 const isDisabled = busy || skill.disabled || isOnCooldown || isLogicDisabled;
+
+                // Для серого эффекта
                 const grayedOut = isDisabled ? 'grayscale opacity-50' : '';
 
+                // Иконка — если skill.iconUrl начинается на "/", подставляем API_BASE
                 const iconSrc = skill.iconUrl?.startsWith('/')
                     ? `${API_BASE}${skill.iconUrl}`
                     : `${API_BASE}/skills/${skill.type}.png`;
@@ -93,28 +96,37 @@ export const BattleControls: React.FC<BattleControlsProps> = ({
                             title={reason || skill.reason || skill.name}
                         >
                             <img
-                                key={iconSrc}
                                 src={iconSrc}
                                 alt={skill.name}
                                 className={grayedOut}
                                 onError={(e) => {
+                                    // Если не нашли иконку, подставим дефолт
                                     e.currentTarget.src = '/assets/icons/default.png';
                                 }}
                             />
+                            {/* Если есть кулдаун, показываем оставшееся время */}
                             {skill.cooldownLeft > 0 && (
                                 <div className="cooldown">{skill.cooldownLeft}s</div>
                             )}
                         </button>
 
+                        {/* Если это heal, показываем количество рома */}
                         {isHeal && (
                             <div className="rum-info">
                                 🥃 Рома: <strong>{rumAmount}</strong>
+                            </div>
+                        )}
+                        {/* Если это mortar_fire, показываем количество пороха */}
+                        {isMortar && (
+                            <div className="rum-info">
+                                Порох: <strong>{gunpowderAmount}</strong>
                             </div>
                         )}
                     </div>
                 );
             })}
 
+            {/* Кнопка «Выбрать ближайшего врага» */}
             <div className="skill-slot-wrapper">
                 <button
                     className="skill-slot"
@@ -126,8 +138,13 @@ export const BattleControls: React.FC<BattleControlsProps> = ({
                 </button>
             </div>
 
+            {/* Кнопка «Выйти из арены» */}
             <div className="skill-slot-wrapper">
-                <button className="skill-slot" onClick={leave} title="Порт">
+                <button
+                    className="skill-slot"
+                    onClick={leave}
+                    title="Порт"
+                >
                     <img src="/assets/icons/leave.png" alt="Порт" />
                 </button>
             </div>

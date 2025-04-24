@@ -1,4 +1,5 @@
 // 📁 src/socket/SocketManager.ts
+
 type Callback = (data: any) => void;
 
 class SocketManagerClass {
@@ -30,10 +31,10 @@ class SocketManagerClass {
 
                 if (msg.type === 'pong') return;
 
-                // 🎯 Обработка обновлений арены (обязательно!)
+                // 🎯 Если тип 'update' или 'arena:update', вызываем коллбэки
                 if ((msg.type === 'update' || msg.type === 'arena:update') && msg.key) {
                     const cbs = this.subscriptions.get(msg.key);
-                    if (cbs) cbs.forEach(cb => cb(msg.payload));
+                    if (cbs) cbs.forEach((cb) => cb(msg.payload));
                 }
             } catch (err) {
                 console.error('💥 Ошибка парсинга сообщения WebSocket:', err);
